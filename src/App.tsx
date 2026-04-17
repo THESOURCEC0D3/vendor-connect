@@ -7,7 +7,8 @@ import Navbar from '@/components/Navbar';
 import DirectoryPage from '@/pages/DirectoryPage';
 import AuthPage from '@/pages/AuthPage';
 import ProfilePage from '@/pages/ProfilePage';
-import VendorDetailsPage from '@/pages/VendorDetailsPage';
+import VendorDetailsPage from "@/pages/VendorDetailsPage";
+import ResetPasswordPage from "@/pages/ResetPasswordPage";
 
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -43,9 +44,18 @@ export default function App() {
         <main className="container mx-auto px-6 py-6 max-w-[1200px]">
           <Routes>
             <Route path="/" element={<DirectoryPage user={user} />} />
-            <Route path="/auth" element={!user ? <AuthPage /> : <Navigate to="/" />} />
-            <Route path="/profile" element={user ? <ProfilePage user={user} /> : <Navigate to="/auth" />} />
+            <Route
+              path="/auth"
+              element={!user ? <AuthPage /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/profile"
+              element={
+                user ? <ProfilePage user={user} /> : <Navigate to="/auth" />
+              }
+            />
             <Route path="/vendor/:id" element={<VendorDetailsPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
           </Routes>
         </main>
         <Toaster position="top-center" />
